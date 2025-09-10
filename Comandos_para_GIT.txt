@@ -1,6 +1,10 @@
 ___Pasos para inicalizarte en GIT___
 Para mas detalle: https://www.youtube.com/watch?v=9ZJ-K-zk_Go&t=494s
 
+
+
+
+
 // CONFIGURACIÓN INICIAL
 
 - git config --global user.name "Marco HB" /*Vamos a configurar en nombre del usuario en la configuración global de git.*/
@@ -29,8 +33,15 @@ Para mas detalle: https://www.youtube.com/watch?v=9ZJ-K-zk_Go&t=494s
 
 - git mv archivo.txt marco.txt /*Sirve para cambiar el nombre del archivo.txt a marco.txt*/
 
+
+
+
+
+
 // PRIMEROS PASOS EN GIT 
 (Área de tabajo / Stitched / committed)
+
+- touch archivo.txt /*Crea un archivo.txt*/
 
 - cd /*Para moverte entre todos los directorios*/
 
@@ -208,3 +219,22 @@ Para mas detalle: https://www.youtube.com/watch?v=9ZJ-K-zk_Go&t=494s
 - git clone https://github.com/Darkness-Mr/Repo-one.git /*Sirve para clonar un repositorio remoto que estaba en GITHUB*/
 
 - git push origin master /*Esto sirve para subir algo desde nuestro repositorio local hacia el repositorio remoto(la rama master y origin, pueden variar)*/
+
+- git pull /*Actualiza tu repositorio local, por si realizaron un cambio en el repositorio remoto que se encuentra en GITHUB*/
+
+- git fetch /*Nos carga el remositorio remoto pero en una rama diferente a la que tenemos en local*/
+
+- git switch --detach origin/master /*Sirve para cambiarnos a nuestra rama del servidor de GITHUB que acaba de descargar con git fetch*/
+
+
+
+
+// MIGRAR REPOSITORIO REMOTO
+
+- git remote -v /*Nos muestra todas las cosas que podemos hacer con el repositorio remoto*/
+
+- git remote add origin https://github.com/Darkness-Mr/Nuevo-repo.git /*Lo que hace es agregar ese repositorio remoto a nuestro repositorio local*/
+
+- git branch -M main
+
+- git push -u origin main /*-u es para no estar poniendo origin main a cada rato, solo lo ponemos por primera y ultima vez*/
