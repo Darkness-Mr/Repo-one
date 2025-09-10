@@ -235,6 +235,65 @@ Para mas detalle: https://www.youtube.com/watch?v=9ZJ-K-zk_Go&t=494s
 
 - git remote add origin https://github.com/Darkness-Mr/Nuevo-repo.git /*Lo que hace es agregar ese repositorio remoto a nuestro repositorio local*/
 
-- git branch -M main
+- git branch -M main /*Si tu rama actual se llama "master" y ejecutas git branch -M main, ahora pasará a llamarse "main".*/
 
 - git push -u origin main /*-u es para no estar poniendo origin main a cada rato, solo lo ponemos por primera y ultima vez*/
+
+
+
+
+
+// BUENAS PRACTICAS EN GIT
+
+- Siempre agregar un -gitignore
+
+- Crear ramas con obejtivos 
+
+- Nombres descriptivos
+
+- Hacer pruebas locales, antes de subirlo al repositorio remoto
+
+- No trabajar en la rama main
+
+- Utilizar estrategias de branching /*Son formas diferentes de fusionar ramas*/
+
+- Los commits deben ser significativos
+
+- Mantener actualizado en repositorio
+
+- Usar tags para commits importantes
+
+- Mantener listo el historial
+
+
+
+
+// PROXIMO PASOS (Para investigar por tu cuenta)
+
+- git stash /*Es como hacer una "pausa" en lo que estás haciendo. Tomas todo lo que tienes abierto y sin guardar, y lo guardas en un cajón para poder atender otra cosa. Tu espacio de trabajo queda limpio temporalmente*/
+
+- git stash pop /*Recuperar los cambios que guardaste con el último git stash y volver a aplicarlos en tu espacio de trabajo*/
+
+- git cherry-pick a1b2c3d /*Sirve para Traer un commit específico de otra rama y aplicarlo exactamente como está en la rama en la que te encuentras ahora*/
+
+- /*Milestones Sirven para Agrupar y hacer seguimiento a un conjunto de issues (tareas o errores) que deben completarse para alcanzar un objetivo específico dentro de un proyecto, esto lo puedes configurar en GITHUB*/
+
+- git rebase -i main /*Rebase es como decir quiero que mis cambios parezcan que empezaron desde el punto más reciente de la rama principal, no desde el punto antiguo donde yo empecé a trabaja*/
+
+- git rebase -i HEAD~5 /*Para los ultimos 5 commits*/
+
+- /*Squash es como tomar todos los borradores, anotaciones y versiones intermedias de un documento y fusionarlas en un solo documento final y pulido.*/
+
+- git submodule add https://github.com/usuario/mi-libreria.git libs/mi-libreria /*Esto clonará el repositorio https://github.com/usuario/mi-libreria.git dentro de la carpeta libs/mi-libreria de tu proyecto actual, en pocas palabras submodule te permiten tener un proyecto dentro de otro proyecto, manteniendo su historial independiente*/
+
+- /*Los git hooks sirven para ejecutar scripts o comandos automáticamente antes o después de que ocurra un evento importante en Git, como un commit, un push o un merge.*/
+
+- /*git bisect es como un juego de "caliente y frío" que usa Git para ayudarte a localizar el commit problemático. Tú le dices a Git cuándo el código está "bueno" (sin el bug) y cuándo está "malo" (con el bug), y Git va saltando inteligentemente entre commits hasta señalar al culpable.*/
+
+- git bisect start /*Iniciar la búsqueda*/
+
+- git bisect bad /*Marcar el commit actual como "malo" (donde está el bug)*/
+
+- git bisect good a1b2c3d78 /*Marcar un commit con hash a1b2c3d78 antiguo como "bueno" (cuando funcionaba)*/
+
+- git bisect reset /*Una vez encontrado el culpable, finalizas la búsqueda y vuelves a tu rama original*/
