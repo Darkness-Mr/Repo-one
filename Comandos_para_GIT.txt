@@ -1,0 +1,201 @@
+___Pasos para inicalizarte en GIT___
+Para mas detalle: https://www.youtube.com/watch?v=9ZJ-K-zk_Go&t=494s
+
+// CONFIGURACIÓN INICIAL
+
+- git config --global user.name "Marco HB" /*Vamos a configurar en nombre del usuario en la configuración global de git.*/
+
+- git config --global user.email "marcoxhbx18@gmail.com" /*Vamos a configurar en email del usuario en la configuración global de git.*/
+
+- git config --list /*Muestrame todas las configuraciones que Git tiene configuradas por default y tu puedes cambiarlas*/
+
+- git config --global --list /*Puedes ver todas las cinfiguraciones que se realizó en global*/
+
+- clear /*Limpias la consola*/
+
+- git config --global core.editor "code --wait" /*Configuramos Visual Studio Code para que sea nuestro editor y wait es que cada cambio va a esperar a que se cierre el editor para guardarse*/
+
+- git config --global color.ui true /*De esta forma las salidas en pantalla que git nos devuelva van a ser mas coloridas*/
+
+- git config --global core.autocrlf true/input /*true si eres usuario de windows y input si eres usuario de mac o linux simplemente este quienes descarguen nuestro programa sea comoatible con su ordenador es un salto de linea y regresar al inicio (\r\n)*/
+
+- ls /*Puedes ver todos los directorios, archivos, etc del directorio donde te encuentras*/
+
+- pwd /*Puedes ver la ruta en la que te encuentras*/
+
+- ls -a /*Muestra todos lo directores, archivos, etc y hasta los que estan ocultos*/
+
+- rm archivo.txt /*Elimina el archivo.txt de nuestra área de trabajo*/
+
+- git mv archivo.txt marco.txt /*Sirve para cambiar el nombre del archivo.txt a marco.txt*/
+
+// PRIMEROS PASOS EN GIT 
+(Área de tabajo / Stitched / committed)
+
+- cd /*Para moverte entre todos los directorios*/
+
+- cd g: /*Te mueves al disco g*/
+
+- cd ../ /*Retrocedes a un directorio anterior*/
+
+- mkdir repo /*Creaste una carpeta llamada repo*/
+
+- rmdir repo /*Eliminaste una carpeta llamada repo*/
+
+- git init /*Inicializas Git en tu repositorio*/
+
+- git add archivo.txt /*Sube solamente el archivo.txt de tu área de trabajo al área de preparación(Stitched)*/
+
+- git add . /*Sube todos los archivos de tu área de trabajo se suben al Stitched*/
+
+- git add archivo.txt marco.txt /*Esta subiendo dos archivos al Stitched, asi puedes agregar mas sin problemas*/
+
+- git status /*Nos muestra todos los archivos que estan listos para ser subidos(GREEN), las modificaciones o no estan listos para ser subidos al repositorio(RED), etc*/
+
+- git rm --cached archivo.txt /*Removemos el archivo.txt del Stitched*/
+
+- git commmit -m "Agregando los dos primeros archivos de texto" -a /*Con esto subimos a nuestro repositorio con un mensaje que esta en "" y el -a es para subir todos los archivos que estan en Stitched*/
+
+- git commit /*Si hay algun archivo en Stitched te abrira VScode Y te pedira que escribas el mensaje, si no hay ningun archivo en Stitched puedes solo te mostrara un mensaje donde no hay ningun archivo para ser subido*/
+
+- git commit -a /*Sube de frente los archivos sin necesidad que pasen por el Stitched*/
+
+
+// RESTORE, CHECKOUT Y MÁS
+
+- git restore archivo.txt /*Restaura un archivo ya sea si este subidos al Stitched, Committed que fue eliminado con anterioridad con rm archivo.txt (Esto funciona siempre en cuando el archivo.txt estuvo en nuestro repositorio con anterioridad y luego lo eliminamos que llegaria a ser un cambio adicional)*/
+
+- git checkout archivo.txt /*Si modificaste el  archivo.txt, con este comando vamos a poder restaurarlo a como estaba la ultima vez que fue guardo en el repositorio(funciona siempre en cuando este archivo no este en Stitched)*/
+
+- git reset --hard /*Es un restaurador forsozo aun asi este en el área de Stitched*/
+
+- git status -s/--short /*-s o --short es lo mismo, lo que hace es mostrarte una interfaz mas minimalista*/
+
+
+
+// GIT DIFF
+
+- git show archivo.txt /*Te mostara el contenido de archivo.txt que previamente este subido al respositorio(commit)*/
+
+- git diff --staged /*Te muestra los cambios de un archivo de que ya fue subido al committed y lo nuevo que esta en el Stitched*/
+
+- git log /*Te muestra los commit realizado de la rama actual (Si nos encontramos en un rama hija, mostrara sus ramas y la del padre tambien)*/
+
+- git log --oneline /*Te muestra una cierta cantidad del identificador y el mensaje con el que fue subido*/
+
+- git log --online --all /*Te muestra los commits de todas las ramas sin excepción*/
+
+- git config --global core.abbrev 9 /*9 es la cantidad de digitos(Puedes colocar cualquier numero lo recomdable es de 5-9) de un identificador que se va a mostrar en git log --oneline*/
+
+- dit diff 4427bfe4s 9ccc34f59 /*Compara los ultimos commit realizados, los numeros simplificados de los identificadores*/
+
+- git diff --name-only 4427bfe4s 9ccc34f59 /*Te muestra solamente el nombre de los archivos los cuales fueron modificados*/
+
+- git diff --word-diff 4427bfe4s 9ccc34f59 /*Te muestra la diferencia entre los conteniedos de los archivos commit*/
+
+
+
+// MODIFICAR Y DESHACER COMMITS
+
+- git commit --amend /*Esto nos abre el ultimo commit del archivo para poder modificarlo y solo con cerrarlo se actualiza*/
+
+- git rebase -i head-3 /*Retrocede al 3 commits anteriores para poder empezar a modificarlo (Es algo complicado de entender pero para eso busca en tiempo 1:14:00 del video)*/
+
+- git reabase --continue /*Trae devuelta a los commits borrados pero son diferentes ya que tienen un nuevo identificador*/
+
+- git reset --soft 45a55342f /*Redirecciona el puntero HEAD hacia un commmit con ese identificador y llevando el commit anterior al área de Stitched, manteniendo los arhivos de Stitched antiguos*/
+
+- git reset --soft head~2 /*Otra forma de escribir soft redireccionando el HEAD hacia 2 commits anteriores*/
+
+- git reset --mixed 594a67258 /*Redirecciona el puntero HEAD hacia ese commit, eliminando el actual, limpiando toda modificación del área de Stitched y mantienen el área de trabajo intacta*/
+
+- git reset --hard /*Elimina el commit actual, descartando todo cambia en el área de trabajo sobreescribiendo todo, los archivos actuales pone en nuestra nueva área de trabajo, y limpia el área de Stitched*/
+
+
+
+// RAMAS (BRANCHES)
+
+- git branch /*Nos muestra todas las ramas creadas*/
+
+- git branch modificar-dev /*Creamos una rama con nombre modificar-dev*/
+
+- git checkout modificar-dev /*Te mueve a la rama con nombre modificar-dev*/
+
+- git switch master /*Es una forma mas recomendable de moverte entre ramas en este caso nos movemos a la rama master*/
+
+- git checkout -b rama-nueva /*Me creara una rama con nombre rama-nueva y me mueve hacia ella*/
+
+- git switch -c rama-creada-temporal /*Me creara una rama con nombre rama-creada-temporal y me mueve hacia ella*/
+
+- git branch -d rama-creada-temporal /*Elimina la rama con nombre rama-creada-temporal(Funciona siempre en cuando estemos posicionados en otra rama diferente a la que queremos eliminar)*/
+
+- git branch -m modificar-dev modificar-texto /*Cambiamos el nombre de la rama modificar-dev por el nombre modificar-texto(Esto solo funciona siempre en cuando estemos posicionados en otra rama diferente a la que queremos cambiar el nombre)*/
+
+- git branch -m cambiar-texto /*Cambiamos el nombre de la rama en la que nos encontramos por cambiar-texto*/
+
+
+
+
+// FUSIÓNAR RAMAS (MERGE)
+
+- git merge optimize-sum-function /*Fusiona la rama optimize-sum-function a la rama donde nos encontramos(para que esto funcione debemos posicionarnos en la rama donde queremos que modificar), la rama optimize-sum-function va a seguir existiendo*/
+
+- git reset --hard 788177d37 /*Desacemos la fusionar regresando el contenido(el ultimo contenido que fue guardado en el committed) donde habiamos fusionado*/
+
+
+
+
+// MERGE CONFLICTS
+
+- Accept Current Change /*Acepta solo el cambio de la rama donde nos encontramos*/
+
+- Accept Incoming Change /*Acepta el cambio de la rama secundaria eliminando los cambio que se realizó en la rama principal*/
+
+- Accept Both Change /*Acepta los dos cambios que se realizaron en ambas ramas*/ 
+
+- Compare Change /*Te abre una nueva interfaz donde podras realizar una mejor solución al conflicto del código*/
+
+- git merge --continue /*Ponemos eso luego de realizar la solución del conflicto de fusión de ramas*/
+
+
+
+
+
+// ARCHIVO GIT IGNORE
+
+- git ls-tree -r --name-only e24c734j8 /*ls-tree es para mostrar todos los archivos que tiene un committed en expecifico (En este caso del committed e24c734j8), -r muestra todos los archivos y directorios, --name-only es para ver solamente el nombre*/
+
+- git ls-tree -r --name-only HEAD /*Lo mismo de arriba pero es el HEAD es para hacer referencia al ultimo commit que se realizo sin poner su identificador*/
+
+- /*Debemos crear un archivo llamado .gitignore en nuestra área de trabajo y dentro de ese archivo colocar todos los archivos que queremos que no se suban al repositorio*/
+
+- /*DEbemos colocar en el archivo .gitignore *.txt ignora todos los archivos que tengan el formato .txt de nuestra área de trabajo y asi podemos poner con *.png, y asi con muchos mas formatos */
+
+- /*!readme.txt eso signfica que no debemos ignorar este archivo .txt*/
+
+- /*fotos/ de esta manera ignoramos todo lo que esta en la carpeta fotos*/
+
+- /*!fotos/background.png de esta forma no ignoramos esa fotos en especificada en la carpeta fotos*/
+
+- /*El archivo .gitignore solo sirve para archivos que nunca fueron subidos pero ya fueron subidos y luego lo queremos poner en nuestro archivo .gitignore no va a servir*/
+
+- git config --global core.excludesfile G:/.gitignore_global /*El archivo .gitignore_global es un archivo que puede ir afuera de nuestra área de trabajo y no debemos procuparnos por estar creando a cada rato un archivo .gitignore en cada área de trabajo, pero si queremos ignora archivos en especifico podemos crear un archivo .gitignore en nuestra área de trabajo local y esa va a tener mas prioridad que el archivo .gitignore_global*/
+
+
+
+
+
+// GIT ALIAS
+
+- git log --oneline --all --graph /*Nos nuestra todos los commits hasta la de las ramas diferentes a la master*/
+
+- git log --oneline --all --graph --pretty=format:"%C(auto)%h%d %s %C(black)%C(bold)%cr" /*Es lo mismo de arriba pero tambien le agrega el tiempo de hace cuanto que se realizó el commit*/
+
+- git config --global alias.log-mejorado "log --oneline --all --graph --pretty=format:'%C(auto)%h%d %s %C(black)%C(bold)%cr'" /*Esto lo que hace es en vez de poner todo git log --oneline --all --graph --pretty=format:"%C(auto)%h%d %s %C(black)%C(bold)%cr" solo debemos poner git log-mejorado entoneces lo que hacemos en sustituir todo el comando inicial por algo mas pequeño*/
+
+
+
+
+// GIT REFLOG
+
+- git reflog /*Aqui nos mostrara todo los commits donde el HEAD estuvo aun asi esten eliminados*/
