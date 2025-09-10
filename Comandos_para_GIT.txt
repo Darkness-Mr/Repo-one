@@ -199,3 +199,12 @@ Para mas detalle: https://www.youtube.com/watch?v=9ZJ-K-zk_Go&t=494s
 // GIT REFLOG
 
 - git reflog /*Aqui nos mostrara todo los commits donde el HEAD estuvo aun asi esten eliminados*/
+
+
+
+
+// GIT PUSH
+
+- git clone https://github.com/Darkness-Mr/Repo-one.git /*Sirve para clonar un repositorio remoto que estaba en GITHUB*/
+
+- git push origin master /*Esto sirve para subir algo desde nuestro repositorio local hacia el repositorio remoto(la rama master y origin, pueden variar)*/
